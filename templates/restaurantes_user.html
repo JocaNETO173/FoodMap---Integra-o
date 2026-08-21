@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodMap - Restaurantes</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="logo-container logo-reload">
+            <div class="logo-brand font-decorative">
+                Fo<!-- Inserir ícone de pin -->dMap
+            </div>
+        </div>
+
+        <button class="gear-btn" id="gearBtn" aria-label="Opções do usuário">
+            <!-- adicionar ícone de engrenagem -->
+        </button>
+
+        <div class="user-dropdown" id="userDropdown">
+            <div class="user-info-name">João Silva</div>
+            <div class="user-info-email">joao.silva@email.com</div>
+            <div class="dropdown-divider"></div>
+            <a href="login.html" class="logout-btn">Sair da conta</a>
+        </div>
+    </header>
+
+    <main class="content-container">
+        <div class="search-bar-container">
+            <!-- adicionar ícone de lupa -->
+            <form method="post">
+                <input type="text" name="termo" value="{{ termo }}" class="search-input" placeholder="Pesquise aqui">
+            </form>
+        </div>
+
+        <!-- ESPAÇO RESERVADO PARA OS RESTAURANTES DO BANCO DE DADOS -->
+        <div id="restaurants-list-container">
+            <h3>Resultados:</h3>
+            <ul>
+                {% if restaurantes %}
+                {% for r in restaurantes %}
+                <li><strong>{{ r.nome }}</strong> - Categoria: {{ r.categoria }}</li>
+                {% endfor %}
+                {% else %}
+                <p>Nenhum restaurante encontrado.</p>
+                {% endif %}
+            </ul>
+        </div>
+    </main>
+</body>
+
+</html>

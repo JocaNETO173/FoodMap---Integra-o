@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodMap - Login</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="auth-wrapper">
+        <div class="logo-container logo-reload auth-header-logo">
+            <span class="logo-welcome font-decorative">Bem vindo ao</span>
+            <div class="logo-brand font-decorative">
+                Fo<span class="pin-icon"></span>dMap!
+            </div>
+        </div>
+
+        <div class="auth-card">
+            <form action="/restaurantes" method="GET">
+                <div class="form-group" style="margin-bottom: 16px;">
+                    <label for="email">Digite seu email:</label>
+                    <input type="email" name="email" class="form-input" required>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="senha">Digite sua senha:</label>
+                    <input type="password" name="senha" class="form-input" required>
+                </div>
+
+                <button type="submit" class="btn-primary-red">Login</button>
+            </form>
+        </div>
+
+        <div class="auth-footer">
+            Ainda não possui uma conta? <a href="/cadastro_usuario">Crie uma!</a>
+        </div>
+    </div>
+
+</body>
+</html>
