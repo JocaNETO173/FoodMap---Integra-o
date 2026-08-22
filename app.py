@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, flash #Flash é utilizado para dar alertas ao usuário na tela
 import mysql.connector
+import werkzeug.security as security # Biblioteca que será utilizada para criptografar a senha do usuário
 
 app = Flask(__name__)
 
@@ -19,8 +20,29 @@ def index():
 def login():
     return render_template("login.html")
 
-@app.route("/cadastro_usuario")
+@app.route("/cadastro_usuario", methods="POST")
 def cadastroUser():
+    nome = request.form.get("nome")
+    email = request.form.get("email")
+    senha = request.form.get("senha")
+    confirmar_senha = request.form.get("confirm-senha")
+
+    if senha != confirmar_senha:
+        flash()
+        return redirect('/cadastro_usuario')
+
+    senha_criptografada = security.generate_password_hash(senha)
+    try:
+
+        conexao = mysql.connector.connect(**bd_config)
+        cursor = conexao.cursor(dictionary=True)
+
+        cursor.close()
+        conexao.close()
+    except:
+        pass
+    finally:
+        pass
     return render_template("cadastro.html")
 
 @app.route("/restaurantes", methods=["GET", "POST"])
